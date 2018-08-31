@@ -1,7 +1,8 @@
 # Overview
-For Raspberry Pi-specific code, see the `raspi` folder. For arduino-specific code, see `arduino`.
+For Raspberry Pi-specific code, see the `rpi` folder. For arduino-specific code, see `arduino`.
 
-## raspi
-- Installation instructions
+## rpi
+- Raspbian installation
+- Client setup
 
 ## arduino
