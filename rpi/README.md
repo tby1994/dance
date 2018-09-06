@@ -11,6 +11,8 @@ These instructions are for installing Raspbian with a desktop environment using 
 
 **Connecting to the NUS Wifi**
 
+> Note: I am currently not connecting to the NUS Wifi since its difficult to figure out the pi's IP address headlessly. Instead I have set up a hotspot using Connectify, which informs me of connected devices' addresses.
+
 3. If you have an external monitor and keyboard, go to step 4. Otherwise, go to step 5.
 4. Follow instructions on the [official docs](https://projects.raspberrypi.org/en/projects/raspberry-pi-getting-started/4). Then go to step 10.
 5. Install Bonjour print services for windows for mDNS support. 
@@ -40,8 +42,6 @@ network={
 }
 ```
 
-> Note: I am currently not connecting to the NUS Wifi since its difficult to figure out the pi's IP address headlessly. Instead I have set up a hotspot using Connectify, which informs me of connected devices' addresses.
-
 **Setting a static IP (not working)**
 
 12. Follow [these instructions](https://raspberrypi.stackexchange.com/questions/37920/how-do-i-set-up-networking-wifi-static-ip-address/74428#74428) to set up a static IP address with dhcpcd. Example `/etc/dhcpcd.conf`:
@@ -56,8 +56,3 @@ static domain_name_servers=172.19.215.140 172.19.50.39
 **Graphical desktop sharing**
 
 14. Follow instructions here to [set up VNC](https://www.realvnc.com/en/connect/docs/raspberry-pi.html#setting-up-your-raspberry-pi). Using this setup does not require a static IP, just an account with RealVNC and an internet-connected pi.
-
-
-## Installing Miniconda
-
-Simple instructions [here](https://gist.github.com/simoncos/a7ce35babeaf73f512be24135c0fbafb). Note that the python version will be downgraded from 3.5 to 3.4.
