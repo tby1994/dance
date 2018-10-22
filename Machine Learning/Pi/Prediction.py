@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[ ]:
+# In[80]:
 
 
 # scale the data points
@@ -21,30 +21,27 @@ from sklearn.preprocessing import StandardScaler
 
 import csv
 
-def predict()
+def predict():
 
     filename_mlp = "Neural_Network_Model.sav"
-    filename_rd = "Random_Forestry_Model.sav"
-    data = pd.read_csv(r'/home/pi/Desktop/cleaned_dataset.csv')
+    filename_svm = "SVM.sav"
+    filename_rd = "RD.sav"
+#     data = pd.read_csv(r'/home/pi/3002/main/test_dataset.csv')
+    data = pd.read_csv(r'C:\Users\User\Desktop\Study\Year 3\Sem 1\CG3002\DanceProject\Machine Learning\extracted data\test_dataset.csv')
     
-    mlp_model = pickle.load(open(filenameMLP, 'rb'))
-    rd_model = pickle.load(open(filenameRD, 'rb'))
+    mlp_model = pickle.load(open(filename_mlp, 'rb'))
+    svm_model = pickle.load(open(filename_svm, 'rb'))
+    rd_model = pickle.load(open(filename_rd, 'rb'))
     
-    prediction_rd = rd_model.predict(data)
-    
-    # data scaling to improve accuracy of mlp
-    scaler = StandardScaler()
-    scaler.fit(data)
-    
-    prediction_mlp = mlp_model.predict(scaler.transform(data))
-    
-    predictions = prediction_mlp + prediction_rd
+    prediction_mlp = mlp_model.predict(data).tolist()
+    prediction_svm = svm_model.predict(data).tolist()
+    prediction_rd = rd_model.predict(data).tolist()
+    predictions = prediction_mlp + prediction_svm + prediction_rd
     
     mapping = { 1 : 'chicken', 2 : 'number7', 3 : 'sidestep', 4 : 'turnclap', 5 : 'wiper'}
     output = pd.DataFrame({'activity' : predictions})
-    output = output.replace({'activity': mapping})   
+    output = output.replace({'activity': mapping})
+    
     b = output.activity.mode()
-    myFile = open('output.csv', 'w')  
-    with myFile:  
-        myFile.write(b[0])
+    return b[0]
 
